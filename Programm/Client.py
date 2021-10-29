@@ -6,20 +6,19 @@ def open_word():
     print("Open word Postrequest")
 
 
-def post_to_server():
-   url = 'https://hookb.in/dmXzpekjy3Hx8Yjj89jJ'
+def post_to_server(id, value):
+    url = 'http://' + configs.server_ip + ':8000/action/' + id
 
-   data = {
-    "name": "John"
+    data = {
+        "value": value
     }
 
-   requests.post(url, verify=True, json=data)
+    requests.post(url, verify=True, json=data)
     
-def get_ui_configs():
-   url = 'http://' + configs.server_ip + ':8000/grid'
+def get_ui_json():
+    url = 'http://' + configs.server_ip + ':8000/test.json'
 
-   response = requests.get(url, verify=True)
-   grid = response.json()
-   print(grid["buttons"]["2"]["name"])
+    response = requests.get(url, verify=True)
+    return response.json()
 
 # get_ui_configs()
