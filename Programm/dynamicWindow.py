@@ -4,8 +4,8 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 class DynamicWindow(Gtk.Window):
     first_column_of_row_placed = False
-    previous_first_colum = None
-    previous_colum = None
+    previous_first_column = None
+    previous_column = None
 
     def __init__(self):
 
@@ -35,22 +35,24 @@ class DynamicWindow(Gtk.Window):
         button = Gtk.Button(label=json_column["name"], expand=True)
         width = int(json_column["width"])
 
-        if(self.previous_first_colum == None):
+        if(self.previous_first_column == None):
             self.add_first_column(grid, button, width)
 
         elif(not self.first_column_of_row_placed):
-            self.add_first_colum_of_row(grid, button, width)
+            self.add_first_column_of_row(grid, button, width)
 
         else:
-            grid.attach_next_to(button, self.previous_colum, Gtk.PositionType.RIGHT, width, 1)
+            grid.attach_next_to(button, self.previous_column, Gtk.PositionType.RIGHT, width, 1)
+            self.previous_column = button
 
-    def add_first_colum_of_row(self, grid, button, width):
-        grid.attach_next_to(button, self.previous_first_colum, Gtk.PositionType.BOTTOM, width, 1)
+    def add_first_column_of_row(self, grid, button, width):
+        grid.attach_next_to(button, self.previous_first_column, Gtk.PositionType.BOTTOM, width, 1)
+        self.previous_first_column = button
         self.first_column_of_row_placed = True
-        self.previous_first_colum = button
-        self.previous_colum = button
+        self.previous_column = button
 
     def add_first_column(self, grid, button, width):
         grid.attach(button, 1, 0, width, 1)
-        self.previous_first_colum = button
+        self.previous_first_column = button
         self.first_column_of_row_placed = True
+        self.previous_column = button
