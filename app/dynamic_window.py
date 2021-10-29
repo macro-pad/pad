@@ -17,16 +17,22 @@ class DynamicWindow(Gtk.Window):
         grid.__init__(self)
 
         ui_json = client.get_ui_json()
+
+        self.add_inputs(grid, ui_json)
+        self.load_settings(grid, ui_json)
+
+        self.add(grid)
+
+    def add_inputs(self, grid, ui_json):
         rows = ui_json["rows"]
         for key in rows:
             self.add_row(grid, rows[key])
-        
+
+    def load_settings(self, grid, ui_json):
         settings_json = ui_json["settings"]
         grid.set_border_width(settings_json["border_width"])
         grid.set_column_spacing(settings_json["column_spacing"])
         grid.set_row_spacing(settings_json["row_spacing"])
-       
-        self.add(grid)
 
     def add_row(self, grid, json_row):
         self.first_column_of_row_placed = False
