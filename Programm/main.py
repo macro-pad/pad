@@ -1,4 +1,4 @@
-import Client
+import client
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -24,10 +24,10 @@ class ButtonWindow(Gtk.Window):
         hbox.pack_start(button, True, True, 0)
 
     def on_click_me_clicked(self, button):
-        Client.open_word("myurl")
+        client.open_word("myurl")
 
     def on_open_clicked(self, button):
-        Client.post_to_server("myurl")
+        client.post_to_server("myurl")
 
     def on_close_clicked(self, button):
         Gtk.main_quit()
