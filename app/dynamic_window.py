@@ -44,13 +44,42 @@ class DynamicWindow(Gtk.Window):
         self.current_column = 0
 
     def add_column(self, grid, json_column, column_id):
-        button = Gtk.Button(label=json_column["name"], expand=True)
-        button.connect("clicked", self.test, column_id, 1)
+        button = None
+        if json_column["type"] == "button":
+            button = self.add_button(json_column, column_id)
+
+        elif json_column["type"] == "redirect-button":
+            button = self.add_redirect_button(json_column, column_id)
+
+        elif json_column["type"] == "slider":
+            button = self.add_slider(json_column, column_id)
+
 
         width = int(json_column["width"])
 
         grid.attach(button, self.current_column, self.current_row, width, 1)
         self.current_column += width
 
-    def test(self, button, id, value):
-        client.post_to_server(id, value)
+    def add_button(self, json_column, column_id):
+        button = Gtk.Button(label=json_column["name"], expand=True)
+        button.connect("clicked", self.button_clicked, column_id)
+        return button
+
+    def add_redirect_button(self, json_column, column_id):
+        redirect_button = Gtk.Button(label=json_column["name"], expand=True)
+        redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
+        return redirect_button
+
+    def add_slider(self, json_column, column_id):
+        slider = Gtk.Slider(label=json_column["name"], expand=True)
+        slider.connect("clicked", self.slider_slided, column_id)
+        return slider
+
+    def button_clicked(self, button, id):
+        client.post_to_server(id)
+
+    def redirect_button_clicked(self, button, id):
+        client.redirect_to_ui(id)
+
+    def slider_slided(self, slider, id):
+        client.post_to_server(id, slider.value)
