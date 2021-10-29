@@ -7,8 +7,8 @@ class ButtonWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="Button Demo")
         self.set_border_width(10)
-
         hbox = Gtk.Box(spacing=6)
+        self.fullscreen()
         self.add(hbox)
 
         button = Gtk.Button.new_with_label("Click Me")
