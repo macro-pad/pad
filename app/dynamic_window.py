@@ -21,7 +21,9 @@ class DynamicWindow(Gtk.Window):
         for key in rows:
             self.add_row(grid, rows[key])
         
-        grid.set_border_width(30)
+        grid.set_border_width(20)
+        grid.set_column_spacing(20)
+        grid.set_row_spacing(20)
        
         self.add(grid)
 
