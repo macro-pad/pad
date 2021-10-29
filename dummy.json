@@ -1,0 +1,55 @@
+{
+    "rows": {
+        "1": {
+            "columns": {
+                "1": {
+                    "type": "button",
+                    "name": "Button 1",
+                    "width": "1"
+                },
+                "2": {
+                    "type": "button",
+                    "name": "Button 2",
+                    "width": "2"
+                }
+            }
+        },
+        "2": {
+            "columns": {
+                "1": {
+                    "type": "button",
+                    "name": "Button 3",
+                    "width": "2"
+                },
+                "2": {
+                    "rows": {
+                        "1": {
+                            "columns": {
+                                "1": {
+                                    "type": "button",
+                                    "name": "Button 4",
+                                    "width": "2"
+                                }
+                            }
+                        },
+                        "2": {
+                            "columns": {
+                                "1": {
+                                    "type": "button",
+                                    "name": "Button 5",
+                                    "width": "1"
+                                },
+                                "2": {
+                                    "type": "button",
+                                    "name": "Button 6",
+                                    "width": "1"
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
