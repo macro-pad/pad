@@ -22,4 +22,4 @@ def get_ui_configs():
    grid = response.json()
    print(grid["buttons"]["2"]["name"])
 
-get_ui_configs()
+# get_ui_configs()
