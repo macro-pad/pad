@@ -4,17 +4,17 @@
             "columns": {
                 "1": {
                     "type": "button",
-                    "name": "Button 1",
+                    "name": "GitHub",
                     "width": "1"
                 },
                 "2": {
                     "type": "button",
-                    "name": "Button 2",
+                    "name": "YouTube",
                     "width": "1"
                 },
                 "3": {
                     "type": "button",
-                    "name": "Button 3",
+                    "name": "Google",
                     "width": "1"
                 }
 
@@ -33,12 +33,12 @@
             "columns": {
                 "7": {
                     "type": "button",
-                    "name": "Button 7",
+                    "name": "Mute",
                     "width": "2"
                 },
                 "8": {
-                    "type": "button",
-                    "name": "Button 8",
+                    "type": "redirect-button",
+                    "name": "Overview",
                     "width": "1"
                 }
             }
