@@ -13,4 +13,3 @@ class API():
 
     def PUT():
         print("Test_PUT")
-
