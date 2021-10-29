@@ -1,4 +1,4 @@
-import ApiCalls
+import Client
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -10,7 +10,7 @@ class ButtonWindow(Gtk.Window):
         hbox = Gtk.Box(spacing=6)
         self.fullscreen()
         self.add(hbox)
-        
+
         button = Gtk.Button.new_with_label("Click Me")
         button.connect("clicked", self.on_click_me_clicked)
         hbox.pack_start(button, True, True, 0)
@@ -24,13 +24,13 @@ class ButtonWindow(Gtk.Window):
         hbox.pack_start(button, True, True, 0)
 
     def on_click_me_clicked(self):
-        ApiCalls.POST()
+        Client.POST()
 
     def on_open_clicked(self):
-        ApiCalls.POST()
+        Client.POST()
 
     def on_close_clicked(self):
-        ApiCalls.POST()
+        Client.POST()
 
 window = ButtonWindow()
 window.show_all()
