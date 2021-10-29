@@ -24,10 +24,10 @@ class ButtonWindow(Gtk.Window):
         hbox.pack_start(button, True, True, 0)
 
     def on_click_me_clicked(self, button):
-        Client.open_url("myurl")
+        Client.open_word("myurl")
 
     def on_open_clicked(self, button):
-        Client.open_url("myurl")
+        Client.post_to_server("myurl")
 
     def on_close_clicked(self, button):
         Gtk.main_quit()
