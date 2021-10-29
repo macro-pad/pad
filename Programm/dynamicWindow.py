@@ -29,14 +29,19 @@ class DynamicWindow(Gtk.Window):
         self.first_column_of_row_placed = False
         columns = json_row["columns"]
         for key in columns:
-            self.add_column(grid, columns[key])
+            self.add_column(grid, columns[key], key)
             
         self.current_row += 1
         self.current_column = 0
 
-    def add_column(self, grid, json_column):
+    def add_column(self, grid, json_column, column_id):
         button = Gtk.Button(label=json_column["name"], expand=True)
+        button.connect("clicked", self.test, column_id, 1)
+
         width = int(json_column["width"])
 
         grid.attach(button, self.current_column, self.current_row, width, 1)
         self.current_column += width
+
+    def test(self, button, id, value):
+        client.post_to_server(id, value)

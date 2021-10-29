@@ -13,10 +13,10 @@ def post_to_server(id, value):
         "value": value
     }
 
-    requests.post(url, verify=True, json=data)
+    print(requests.post(url, verify=True, json=data))
     
 def get_ui_json():
-    url = 'http://' + configs.server_ip + ':8000/test.json'
+    url = 'http://' + configs.server_ip + ':8000/grid'
 
     response = requests.get(url, verify=True)
     return response.json()
