@@ -23,14 +23,14 @@ class ButtonWindow(Gtk.Window):
         button.connect("clicked", self.on_close_clicked)
         hbox.pack_start(button, True, True, 0)
 
-    def on_click_me_clicked(self):
-        ApiCalls.POST()
+    def on_click_me_clicked(self, button):
+        ApiCalls.open_url("myurl")
 
-    def on_open_clicked(self):
-        ApiCalls.POST()
+    def on_open_clicked(self, button):
+        ApiCalls.open_url("myurl")
 
-    def on_close_clicked(self):
-        ApiCalls.POST()
+    def on_close_clicked(self, button):
+        Gtk.main_quit()
 
 window = ButtonWindow()
 window.show_all()
