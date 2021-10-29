@@ -10,7 +10,7 @@ class ButtonWindow(Gtk.Window):
         hbox = Gtk.Box(spacing=6)
         self.fullscreen()
         self.add(hbox)
-
+        
         button = Gtk.Button.new_with_label("Click Me")
         button.connect("clicked", self.on_click_me_clicked)
         hbox.pack_start(button, True, True, 0)
