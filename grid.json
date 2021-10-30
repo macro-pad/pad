@@ -37,7 +37,7 @@
                         "width": "1"
                     },
                     "8": {
-                        "type": "redirect-button",
+                        "type": "button",
                         "name": "Google",
                         "width": "1"
                     },
@@ -89,7 +89,7 @@
                         "width": "1"
                     },
                     "11": {
-                        "type": "redirect-button",
+                        "type": "button",
                         "name": "Agar.io",
                         "width": "1"
                     },
@@ -141,7 +141,7 @@
                         "width": "1"
                     },
                     "14": {
-                        "type": "redirect-button",
+                        "type": "button",
                         "name": "Reddit",
                         "width": "1"
                     },
