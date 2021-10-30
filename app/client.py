@@ -2,7 +2,7 @@ import requests
 import configs
 
 def get_server_url():
-    return 'http://' + configs.server_ip + ':8000/'
+    return 'http://' + configs.server_host + ':' + str(configs.server_port)
 
 def post_to_server(id, value):
     url = get_server_url() + "action/" + id
