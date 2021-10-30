@@ -6,17 +6,25 @@ class DynamicWindow(Gtk.Window):
     first_column_of_row_placed = False
     current_row = 0
     current_column = 0
+    main = None
 
-    def __init__(self):
+    def __init__(self, ui_json, main):
+        self.main = main
 
-        super().__init__(title="Grid Example")
-        
+        super().__init__(title="Macro Pad")
+
+        self.load_ui(ui_json)
+
+    def load_settings(self, grid, ui_json):
+        settings_json = ui_json["settings"]
+        grid.set_border_width(settings_json["border_width"])
+        grid.set_column_spacing(settings_json["column_spacing"])
+        grid.set_row_spacing(settings_json["row_spacing"])
+
+    def load_ui(self, ui_json):
         self.fullscreen()
-
         grid = Gtk.Grid()
         grid.__init__(self)
-
-        ui_json = client.get_ui_json()
 
         self.add_inputs(grid, ui_json)
         self.load_settings(grid, ui_json)
@@ -27,12 +35,6 @@ class DynamicWindow(Gtk.Window):
         rows = ui_json["rows"]
         for key in rows:
             self.add_row(grid, rows[key])
-
-    def load_settings(self, grid, ui_json):
-        settings_json = ui_json["settings"]
-        grid.set_border_width(settings_json["border_width"])
-        grid.set_column_spacing(settings_json["column_spacing"])
-        grid.set_row_spacing(settings_json["row_spacing"])
 
     def add_row(self, grid, json_row):
         self.first_column_of_row_placed = False
@@ -79,7 +81,7 @@ class DynamicWindow(Gtk.Window):
         client.post_to_server(id)
 
     def redirect_button_clicked(self, button, id):
-        client.redirect_to_ui(id)
+        self.main.reload_window(client.redirect_to_ui(id))
 
     def slider_slided(self, slider, id):
         client.post_to_server(id, slider.value)

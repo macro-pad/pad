@@ -1,6 +1,5 @@
 import requests
 import configs
-import json
 
 def open_word():
     print("Open word Postrequest")
@@ -22,7 +21,8 @@ def redirect_to_ui(id):
         "value": 1
     }
 
-    requests.post(url, verify=True, json=data)
+    response = requests.post(url, verify=True, json=data)
+    return response.json()
 
 def get_ui_json():
     url = 'http://' + configs.server_ip + ':8000/grid'
