@@ -15,4 +15,6 @@
 #label {
     font-family: century;
     font-size: 1.8rem;
+    background-color: white;
+    border: none;
 }
