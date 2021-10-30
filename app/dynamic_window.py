@@ -2,6 +2,7 @@ import client
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+from gi.repository import Gdk
 class DynamicWindow(Gtk.Window):
     first_column_of_row_placed = False
     current_row = 0
@@ -69,27 +70,19 @@ class DynamicWindow(Gtk.Window):
     def add_redirect_button(self, json_column, column_id):
         redirect_button = Gtk.Button(label=json_column["name"], expand=True)
         redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
+        redirect_button.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0, 0, 0, 1))
         return redirect_button
 
     def add_scale(self, json_column, column_id):
-        #scale = Gtk.Scale()
-        # scale.new_with_range(0, 0, 100, 1)
-        # scale.new(0)
-        # scale.connect("value-changed", self.scale_scaled, column_id)
-        # scale.add_mark(30, 0, "▼")
-        # scale.set_draw_value(True)
-        # scale.set_size_request(0, 100)
-        # scale.set_value_pos(Gtk.PositionType.BOTTOM)
-        
         # scale
         scale = Gtk.Scale().new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
         scale.set_value_pos(Gtk.PositionType.BOTTOM)
         scale.set_size_request(24, 128)
-        scale.set_tooltip_text("Volume")
+        scale.set_tooltip_text(json_column["name"])
 
         # icon
         icon = Gtk.Image()
-        icon.set_tooltip_text("Volume")
+        icon.set_tooltip_text(json_column["name"])
         icon.set_from_icon_name("sink.icon_name", Gtk.IconSize.SMALL_TOOLBAR)
 
         # connect
@@ -98,7 +91,7 @@ class DynamicWindow(Gtk.Window):
         return scale
 
     def button_clicked(self, button, id):
-        client.post_to_server(id)
+        client.post_to_server(id, 1)
 
     def redirect_button_clicked(self, button, id):
         self.main.reload_window(client.redirect_to_ui(id))

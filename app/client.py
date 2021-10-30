@@ -5,14 +5,14 @@ def open_word():
     print("Open word Postrequest")
 
 
-def post_to_server(id, *value):
+def post_to_server(id, value):
     url = 'http://' + configs.server_ip + ':8000/action/' + id
 
     data = {
-        "value": value or 1
+        "value": value
     }
 
-    print(value)
+    print(data)
 
     print(requests.post(url, verify=True, json=data))
     
