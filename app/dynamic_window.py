@@ -48,35 +48,35 @@ class DynamicWindow(Gtk.Window):
     def add_column(self, grid, json_column, column_id):
         element = None
         if json_column["type"] == "button":
-            element = self.add_button(json_column, column_id)
+            element = self.get_button(json_column, column_id)
 
         elif json_column["type"] == "redirect-button":
-            element = self.add_redirect_button(json_column, column_id)
+            element = self.get_redirect_button(json_column, column_id)
 
         elif json_column["type"] == "slider":
-            element = self.add_scale(json_column, column_id)
+            element = self.get_scale(json_column, column_id)
 
-        elif json_column["type"] == "string":
-            element = self.add_string(column_id)
+        elif json_column["type"] == "json-field":
+            element = self.get_string(column_id)
 
         width = int(json_column["width"])
 
         grid.attach(element, self.current_column, self.current_row, width, 1)
         self.current_column += width
 
-    def add_button(self, json_column, column_id):
+    def get_button(self, json_column, column_id):
         button = Gtk.Button(label=json_column["name"], expand=True)
         button.connect("clicked", self.button_clicked, column_id)
         button.set_name("button")
         return button
 
-    def add_redirect_button(self, json_column, column_id):
+    def get_redirect_button(self, json_column, column_id):
         redirect_button = Gtk.Button(label=json_column["name"], expand=True)
         redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
         redirect_button.set_name("redirect-button")
         return redirect_button
 
-    def add_scale(self, json_column, column_id):
+    def get_scale(self, json_column, column_id):
         # scale
         scale = Gtk.Scale().new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
         scale.set_value_pos(Gtk.PositionType.BOTTOM)
@@ -96,8 +96,8 @@ class DynamicWindow(Gtk.Window):
 
         return scale
 
-    def add_string(self, column_id):
-        label = Gtk.Label(client.get_string(column_id))
+    def get_json_field(self, field_name):
+        label = Gtk.Label(client.get_json_field(field_name))
         label.set_name("label")
         label.set_line_wrap(True)
         return label

@@ -29,11 +29,11 @@ def get_ui_json():
     response = requests.get(url, verify=True)
     return response.json()
 
-def get_string(id):
+def get_json_field(id, filed_name):
     url = get_server_url() + "action/" + id
 
     data = {
-        "value": 1
+        "value": filed_name
     }
 
     response = requests.post(url, verify=True, json=data)
