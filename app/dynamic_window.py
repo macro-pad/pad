@@ -46,20 +46,19 @@ class DynamicWindow(Gtk.Window):
         self.current_column = 0
 
     def add_column(self, grid, json_column, column_id):
-        button = None
+        element = None
         if json_column["type"] == "button":
-            button = self.add_button(json_column, column_id)
+            element = self.add_button(json_column, column_id)
 
         elif json_column["type"] == "redirect-button":
-            button = self.add_redirect_button(json_column, column_id)
+            element = self.add_redirect_button(json_column, column_id)
 
         elif json_column["type"] == "slider":
-            button = self.add_slider(json_column, column_id)
-
+            element = self.add_scale(json_column, column_id)
 
         width = int(json_column["width"])
 
-        grid.attach(button, self.current_column, self.current_row, width, 1)
+        grid.attach(element, self.current_column, self.current_row, width, 1)
         self.current_column += width
 
     def add_button(self, json_column, column_id):
@@ -72,10 +71,31 @@ class DynamicWindow(Gtk.Window):
         redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
         return redirect_button
 
-    def add_slider(self, json_column, column_id):
-        slider = Gtk.Slider(label=json_column["name"], expand=True)
-        slider.connect("clicked", self.slider_slided, column_id)
-        return slider
+    def add_scale(self, json_column, column_id):
+        #scale = Gtk.Scale()
+        # scale.new_with_range(0, 0, 100, 1)
+        # scale.new(0)
+        # scale.connect("value-changed", self.scale_scaled, column_id)
+        # scale.add_mark(30, 0, "▼")
+        # scale.set_draw_value(True)
+        # scale.set_size_request(0, 100)
+        # scale.set_value_pos(Gtk.PositionType.BOTTOM)
+        
+        # scale
+        scale = Gtk.Scale().new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
+        scale.set_value_pos(Gtk.PositionType.BOTTOM)
+        scale.set_size_request(24, 128)
+        scale.set_tooltip_text("Volume")
+
+        # icon
+        icon = Gtk.Image()
+        icon.set_tooltip_text("Volume")
+        icon.set_from_icon_name("sink.icon_name", Gtk.IconSize.SMALL_TOOLBAR)
+
+        # connect
+        scale.connect("value-changed", self.scale_scaled, column_id)
+
+        return scale
 
     def button_clicked(self, button, id):
         client.post_to_server(id)
@@ -83,5 +103,5 @@ class DynamicWindow(Gtk.Window):
     def redirect_button_clicked(self, button, id):
         self.main.reload_window(client.redirect_to_ui(id))
 
-    def slider_slided(self, slider, id):
-        client.post_to_server(id, slider.value)
+    def scale_scaled(self, scale, id):
+        client.post_to_server(id, scale.get_value())

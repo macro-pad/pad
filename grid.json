@@ -51,7 +51,7 @@
             "2": {
                 "columns": {
                     "6": {
-                        "type": "button",
+                        "type": "slider",
                         "name": "Volume",
                         "width": "3"
                     }
@@ -103,7 +103,7 @@
             "2": {
                 "columns": {
                     "6": {
-                        "type": "button",
+                        "type": "slider",
                         "name": "Volume",
                         "width": "3"
                     }
@@ -155,7 +155,7 @@
             "2": {
                 "columns": {
                     "6": {
-                        "type": "button",
+                        "type": "slider",
                         "name": "Volume",
                         "width": "3"
                     }

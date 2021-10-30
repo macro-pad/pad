@@ -12,6 +12,8 @@ def post_to_server(id, *value):
         "value": value or 1
     }
 
+    print(value)
+
     print(requests.post(url, verify=True, json=data))
     
 def redirect_to_ui(id):
