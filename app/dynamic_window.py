@@ -71,6 +71,7 @@ class DynamicWindow(Gtk.Window):
         redirect_button = Gtk.Button(label=json_column["name"], expand=True)
         redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
         redirect_button.override_background_color(Gtk.StateType.NORMAL, Gdk.RGBA(0, 0, 0, 1))
+        redirect_button.get_children()[0].modify_fg(Gtk.StateType.NORMAL, Gdk.color_parse('white'))
         return redirect_button
 
     def add_scale(self, json_column, column_id):
