@@ -2,7 +2,6 @@ import client
 import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from gi.repository import Gdk
 class DynamicWindow(Gtk.Window):
     first_column_of_row_placed = False
     current_row = 0
@@ -57,6 +56,9 @@ class DynamicWindow(Gtk.Window):
         elif json_column["type"] == "slider":
             element = self.add_scale(json_column, column_id)
 
+        elif json_column["type"] == "weather":
+            element = self.add_html(json_column, column_id)
+
         width = int(json_column["width"])
 
         grid.attach(element, self.current_column, self.current_row, width, 1)
@@ -93,6 +95,13 @@ class DynamicWindow(Gtk.Window):
         scale.set_name("scale")
 
         return scale
+
+    def add_html(self, json_column, column_id):
+        text_buffer = Gtk.TextBuffer()
+        text_buffer.set_text("<h1>Hello</h1>")
+        text = Gtk.TextView()
+        text.set_buffer(text_buffer)
+        return text
 
     def button_clicked(self, button, id):
         client.post_to_server(id, 1)

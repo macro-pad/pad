@@ -12,10 +12,19 @@
                         "type": "redirect-button",
                         "name": "Gaming",
                         "width": "1"
-                    },
+                    }
+                }
+            },
+            "2": {
+                "columns": {
                     "4": {
                         "type": "redirect-button",
                         "name": "Casual",
+                        "width": "1"
+                    },
+                    "5": {
+                        "type": "redirect-button",
+                        "name": "News",
                         "width": "1"
                     }
                 }
@@ -59,7 +68,7 @@
             },
             "3": {
                 "columns": {
-                    "5": {
+                    "16": {
                         "type": "button",
                         "name": "Mute",
                         "width": "2"
@@ -111,7 +120,7 @@
             },
             "3": {
                 "columns": {
-                    "5": {
+                    "16": {
                         "type": "button",
                         "name": "Mute",
                         "width": "2"
@@ -163,7 +172,7 @@
             },
             "3": {
                 "columns": {
-                    "5": {
+                    "16": {
                         "type": "button",
                         "name": "Mute",
                         "width": "2"
@@ -175,7 +184,33 @@
                     }
                 }
             }
-    
+        },
+        "settings": {
+            "border_width": 20,
+            "column_spacing": 20,
+            "row_spacing": 20
+        }
+    },
+    "5": {
+        "rows": {
+            "1": {
+                "columns": {
+                    "17": {
+                        "type": "weather",
+                        "name": "Weather",
+                        "width": "3"
+                    }
+                }
+            },
+            "2": {
+                "columns": {
+                    "1": {
+                        "type": "redirect-button",
+                        "name": "Back",
+                        "width": "1"
+                    }
+                }
+            }    
         },
         "settings": {
             "border_width": 20,
