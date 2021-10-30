@@ -39,7 +39,8 @@
         "script": "open_website.py",
         "params": {
             "link": "https://google.com"
-        }
+        },
+        "async": true
     }, 
     "9": {
         "script": "open_website.py",
