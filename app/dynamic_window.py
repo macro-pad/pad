@@ -100,6 +100,7 @@ class DynamicWindow(Gtk.Window):
         label = Gtk.Label(json_column["field_name"] + ": " + client.get_json_field(column_id, json_column["field_name"]))
         label.set_name("label")
         label.set_line_wrap(True)
+        label.set_use_markup(True)
         return label
 
     def button_clicked(self, button, id):
