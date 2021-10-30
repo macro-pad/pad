@@ -12,9 +12,7 @@ def post_to_server(id, value):
         "value": value
     }
 
-    print(data)
-
-    print(requests.post(url, verify=True, json=data))
+    requests.post(url, verify=True, json=data)
     
 def redirect_to_ui(id):
     url = 'http://' + configs.server_ip + ':8000/action/' + id
