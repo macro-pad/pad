@@ -104,4 +104,4 @@ class DynamicWindow(Gtk.Window):
         self.main.reload_window(client.redirect_to_ui(id))
 
     def scale_scaled(self, scale, id):
-        client.post_to_server(id, scale.get_value())
+        client.post_to_server(id, int(scale.get_value()))
