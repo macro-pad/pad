@@ -22,7 +22,7 @@ class Main():
 
     def add_css(self):
         style_provider = Gtk.CssProvider()
-        style_provider.load_from_file(Gio.File.new_for_path("app/style.css"))
+        style_provider.load_from_file(Gio.File.new_for_path("./style.css"))
 
         Gtk.StyleContext.add_provider_for_screen(
             Gdk.Screen.get_default(), style_provider,
