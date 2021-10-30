@@ -4,6 +4,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 from gi.repository import Gdk
+from gi.repository import Gio
 
 class Main():
 
@@ -20,12 +21,8 @@ class Main():
         self.window.connect("destroy", Gtk.main_quit)
 
     def add_css(self):
-        css = b"""
-            #red { background: red; }
-        """
-
         style_provider = Gtk.CssProvider()
-        style_provider.load_from_data(css)
+        style_provider.load_from_file(Gio.File.new_for_path("./style.css"))
 
         Gtk.StyleContext.add_provider_for_screen(
             Gdk.Screen.get_default(), style_provider,

@@ -65,14 +65,13 @@ class DynamicWindow(Gtk.Window):
     def add_button(self, json_column, column_id):
         button = Gtk.Button(label=json_column["name"], expand=True)
         button.connect("clicked", self.button_clicked, column_id)
+        button.set_name("button")
         return button
 
     def add_redirect_button(self, json_column, column_id):
         redirect_button = Gtk.Button(label=json_column["name"], expand=True)
         redirect_button.connect("clicked", self.redirect_button_clicked, column_id)
-        redirect_button.set_name("red")
-        # redirect_button.get_children()[0].modify_bg(Gtk.StateType.NORMAL, Gdk.color_parse("#333"))
-        # redirect_button.get_children()[0].modify_fg(Gtk.StateType.NORMAL, Gdk.color_parse("#fff"))
+        redirect_button.set_name("redirect-button")
         return redirect_button
 
     def add_scale(self, json_column, column_id):
@@ -89,6 +88,9 @@ class DynamicWindow(Gtk.Window):
 
         # connect
         scale.connect("value-changed", self.scale_scaled, column_id)
+
+        # style
+        scale.set_name("scale")
 
         return scale
 
