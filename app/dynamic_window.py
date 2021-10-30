@@ -56,8 +56,8 @@ class DynamicWindow(Gtk.Window):
         elif json_column["type"] == "slider":
             element = self.add_scale(json_column, column_id)
 
-        elif json_column["type"] == "weather":
-            element = self.add_html(json_column, column_id)
+        elif json_column["type"] == "string":
+            element = self.add_string(column_id)
 
         width = int(json_column["width"])
 
@@ -96,11 +96,12 @@ class DynamicWindow(Gtk.Window):
 
         return scale
 
-    def add_html(self, json_column, column_id):
+    def add_string(self, column_id):
         text_buffer = Gtk.TextBuffer()
-        text_buffer.set_text("<h1>Hello</h1>")
+        text_buffer.set_text(client.get_string(column_id))
         text = Gtk.TextView()
         text.set_buffer(text_buffer)
+        text.set_name("text")
         return text
 
     def button_clicked(self, button, id):
