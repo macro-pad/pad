@@ -97,12 +97,10 @@ class DynamicWindow(Gtk.Window):
         return scale
 
     def add_string(self, column_id):
-        text_buffer = Gtk.TextBuffer()
-        text_buffer.set_text(client.get_string(column_id))
-        text = Gtk.TextView()
-        text.set_buffer(text_buffer)
-        text.set_name("text")
-        return text
+        label = Gtk.Label(client.get_string(column_id))
+        label.set_name("label")
+        label.set_line_wrap(True)
+        return label
 
     def button_clicked(self, button, id):
         client.post_to_server(id, 1)

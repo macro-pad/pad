@@ -12,7 +12,7 @@
     color: black;
     font-size: 2rem;
 }
-#text {
-    color: red;
-    font-size: 200px;
+#label {
+    font-family: century;
+    font-size: 1.8rem;
 }
