@@ -1,0 +1,86 @@
+{
+    "1": {
+        "script": "change_grid.py",
+        "params": {
+            "grid": 1
+        }
+    },
+    "2": {
+        "script": "change_grid.py",
+        "params": {
+            "grid": 2
+        }
+    },
+    "3": {
+        "script": "change_grid.py",
+        "params": {
+            "grid": 3
+        }
+    },
+    "4": {
+        "script": "change_grid.py",
+        "params": {
+            "grid": 4
+        }
+    },
+    "5": {
+        "script": "mute.py"
+    }, 
+    "6": {
+        "script": "volume.py"
+    },  
+    "7": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://github.com/"
+        }
+    }, 
+    "8": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://google.com"
+        }
+    }, 
+    "9": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://stackoverflow.com"
+        }
+    }, 
+    "10": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://krunker.io"
+        }
+    }, 
+    "11": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://agar.io"
+        }
+    }, 
+    "12": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://www.google.com/fbx?fbx=snake_arcade"
+        }
+    }, 
+    "13": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://youtube.com"
+        }
+    }, 
+    "14": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://reddit.com"
+        }
+    }, 
+    "15": {
+        "script": "open_website.py",
+        "params": {
+            "link": "https://srf.ch"
+        }
+    }
+}
