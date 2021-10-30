@@ -5,7 +5,7 @@
                 "columns": {
                     "2": {
                         "type": "redirect-button",
-                        "name": "Devlopment",
+                        "name": "Development",
                         "width": "1"
                     },
                     "3": {
