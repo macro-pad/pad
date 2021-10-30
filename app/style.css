@@ -1,9 +1,12 @@
 #redirect-button { 
-    background: red; 
+    background: #444; 
+    color: white; 
+    font-size: 2rem;
 }
 #button { 
-    background: red; 
+    background: lightgray; 
+    color: black;
 }
 #scale { 
-    background: red; 
+    color: black;
 }
