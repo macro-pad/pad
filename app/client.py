@@ -37,4 +37,4 @@ def get_json_field(id, filed_name):
     }
 
     response = requests.post(url, verify=True, json=data)
-    return response.text
+    return response.text.replace('"', "")

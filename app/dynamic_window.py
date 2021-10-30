@@ -97,7 +97,7 @@ class DynamicWindow(Gtk.Window):
         return scale
 
     def get_json_field(self, json_column, column_id):
-        label = Gtk.Label(client.get_json_field(column_id, json_column["field_name"]))
+        label = Gtk.Label(json_column["field_name"] + ": " + client.get_json_field(column_id, json_column["field_name"]))
         label.set_name("label")
         label.set_line_wrap(True)
         return label
